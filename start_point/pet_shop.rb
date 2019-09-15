@@ -52,7 +52,19 @@ end
 
 
 # ----------------- 8 & 9 ----------------------
-# for some reason this comes back with 3 british shorthair and when used for the dalmation the array shows 3 still
+# for some reason this comes back with 3 british shorthair and
+# when used for the dalmation the array shows 3 still
+# figured out why it was showing 3 - when calling pet_shop
+# it has 3 hashes pets: admin and name and for each of those the
+# for loop would input the breed name into the array and display three
+# ive confirmed this by accessing the pets hash and for each one
+# it would put the name in the array giving me 6 as there are 6
+# pets in the array
+# again i know how to get the individual value but not sure how
+# to search the full array for the value
+
+
+
 # def pets_by_breed(pet_shop_hash, input_breed_name)
 # p pet_shop_hash[:pets][0][:breed].include?(input_breed_name)
 # p pet_shop_hash[:pets][0][:breed].count(input_breed_name)
@@ -86,9 +98,13 @@ end
 
 
 # ----------------- 10 & 11 & 12 ---------------------
+# tried my best to get this work but wast sure how to specifically search
+# for a string, found mutlipe ways to get the information i wanted but wasnt
+# sure how to search through all of them at once
 
-# def find_pet_by_name(pet_shop, name)
-#     pet = pet_shop[:pets][3]
+
+def find_pet_by_name(pet_shop, name)
+    pet = pet_shop[:pets][3]
   # p pet
 #   name_array = []
 #   for pet_name in pet_shop[:pets]
@@ -96,19 +112,22 @@ end
 #   end
 #   p name_array
 #   return name_array
-# end
+end
 
-def find_pet_by_name(pet_shop, name)
 
+# def find_pet_by_name(pet_shop, name)
   # pet_shop[:pets][3].each { |x| puts "#{x}"}
   # pet_shop[:pets][3].each do | key, value|
   #     puts "#{key}: #{value}"
   # end
-end
+# end
+
+
 # def find_pet_by_name(pet_shop, name)
 #     pet_shop_hash = pet_shop[:pets]
 #    return pet_shop_hash.include?(name)
 # end
+
 
 # def find_pet_by_name(pet_shop, name)
 #   pets = pet_shop[:pets][3]
@@ -131,7 +150,7 @@ end
 #   return nil
 # end
 
-#
+
 # def remove_pet_by_name(pet_shop_hash, input_name)
 #   pet_shop_hash[:pets].delete(input_name)
 #   p [:pets]
@@ -179,9 +198,14 @@ end
 
 
 #------------------- 4 --------------------------
-# not the correct way to do it as its not searching for the pet and just using the exact index value for arthur, but
-# completed it this way just to get an undeerstanding of the code, will need
-# to find how to search specificialy for pet name
+# not the correct way to do it as its not searching for the pet
+# and just using the exact index value for arthur, but
+# completed it this way just to get an understanding of the code,
+# will need to find how to search specificialy for pet name
+# in the above function to be able to call on it here
+# as a result of the code not being proeprly set out
+# im unable to run the following test where i search for "Dave"
+
 def sell_pet_to_customer(pet_shop, pet, customer)
   if customer_pet_count(customer) == 0
     customer[:pets] << pet
