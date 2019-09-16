@@ -30,10 +30,10 @@ def pets_sold(pet_sold)
 end
 
 
-def pet_sold(pets_sold)
-  pet_sold = @pet_shop[:admin][:pets_sold]
-  return pet_sold
-end
+# def pet_sold(pets_sold)
+#   pet_sold = @pet_shop[:admin][:pets_sold]
+#   return pet_sold
+# end
 
 def increase_pets_sold(pets_sold, how_many_sold)
   return @pet_shop[:admin][:pets_sold] += how_many_sold
@@ -206,10 +206,25 @@ end
 # as a result of the code not being proeprly set out
 # im unable to run the following test where i search for "Dave"
 
+
+# def sell_pet_to_customer(pet_shop, pet, customer)
+#   if customer_pet_count(customer) == 0 && customer[:cash] >= pet[:price]
+#     customer[:pets] << pet
+#     pet_shop[:admin][:pets_sold] += 1
+#     customer[:cash] -= pet_shop[:pets][3][:price]
+#     pet_shop[:admin][:total_cash] += pet_shop[:pets][3][:price]
+#     return customer[:pets].length()
+#     return pet_shop[:admin][:pets_sold]
+#     return customer[:cash]
+#     return pet_shop[:admin][:total_cash]
+#   end
+# end
+
+
 def sell_pet_to_customer(pet_shop, pet, customer)
-  if customer_pet_count(customer) == 0 && customer[:cash] >= pet[:price]
-    customer[:pets] << pet
-    pet_shop[:admin][:pets_sold] += 1
+  if customer_pet_count(customer) == 0 && pet[:price] <= customer[:cash]
+    add_pet_to_customer(customer, pet)
+    increase_pets_sold(pet_shop, 1)
     customer[:cash] -= pet_shop[:pets][3][:price]
     pet_shop[:admin][:total_cash] += pet_shop[:pets][3][:price]
     return customer[:pets].length()
