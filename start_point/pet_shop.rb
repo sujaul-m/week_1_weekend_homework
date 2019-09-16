@@ -207,7 +207,7 @@ end
 # im unable to run the following test where i search for "Dave"
 
 def sell_pet_to_customer(pet_shop, pet, customer)
-  if customer_pet_count(customer) == 0
+  if customer_pet_count(customer) == 0 && customer[:cash] >= pet[:price]
     customer[:pets] << pet
     pet_shop[:admin][:pets_sold] += 1
     customer[:cash] -= pet_shop[:pets][3][:price]
